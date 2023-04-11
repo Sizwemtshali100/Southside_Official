@@ -1,0 +1,14 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+<h1>Audit Edit</h1>
+<br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{The_form_edit}}
+    <br>
+    <input type="submit" value="Confirm Edit" class="btn btn-secondary" >
+</form>
+<br>
+{% endblock %}

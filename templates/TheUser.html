@@ -1,0 +1,63 @@
+{% extends 'Layout.html' %}
+
+<style>
+    nav {
+        font-size: large;
+    }
+</style>
+
+{% block content %}
+<nav>
+    {% include 'nav_qa_agent.html' %}
+  </nav>
+<br>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Policy_Number
+        </th>
+        <th>
+            Case_Number
+        </th>
+        <th>
+            Sales_Agent
+        </th>
+        <th>
+            QA_Agent
+        </th>
+    </tr>
+    {% for QA_Agent_Audits in work %}
+    <tr>
+        <td>
+            {{QA_Agent_Audits.AuditDate}}
+        </td>
+        <td>
+            {{QA_Agent_Audits.PolicyNumber}}
+        </td>
+        <td>
+            <a href="{% url 'QA_Audit_details' QA_Agent_Audits.id  %}">
+                {{QA_Agent_Audits}}<br>
+            </a>            
+        </td>
+        <td>
+            {{QA_Agent_Audits.Sales_agent}}
+        </td>
+        <td>
+            {{QA_Agent_Audits.QA_Audit}}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+
+
+
+{% endblock %}
+

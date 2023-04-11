@@ -1,0 +1,40 @@
+{% extends 'Layout.html' %}
+
+{% block content %}
+<center>
+    <h1>Audit details of case number {{TheAuditsEdit.CaseNumber}}</h1>
+
+</center>
+<hr>
+<center>
+    <a href="{% url 'QA_Audit_Edit' TheAuditsEdit.id %}" class="btn btn-primary">
+        Edit
+    </a>
+</center>
+<br>
+<center>
+    <div class="card" style="width: 28rem;">
+        <div class="card-header">
+            {{TheAuditsEdit.PolicyNumber}}<br>
+        </div>
+        <ul class="list-group list-group-flush">
+        <strong>Audit date:</strong><li class="list-group-item">{{TheAuditsEdit.AuditDate}}<br></li>
+        <strong>QA Agent:</strong><li class="list-group-item">{{TheAuditsEdit.QA_Audit}}<br></li>
+        <strong>Case number:</strong><li class="list-group-item">{{TheAuditsEdit.CaseNumber}}<br></li>
+        <strong>Policy Number:</strong><li class="list-group-item">{{TheAuditsEdit.PolicyNumber}}<br></li>
+        <strong>Sales Agent:</strong><li class="list-group-item">{{TheAuditsEdit.Sales_agent}}<br></li>   
+        <strong>AVS Outcome</strong><li class="list-group-item">{{TheAuditsEdit.AVS}}<br></li>
+        <strong>Debit date:</strong><li class="list-group-item">{{TheAuditsEdit.debit_date}}<br></li>
+        <strong>Start date:</strong><li class="list-group-item">{{TheAuditsEdit.start_date}}<br></li>
+        <strong>Caller ID:</strong><li class="list-group-item">{{TheAuditsEdit.Caller_id}}<br></li>
+        <strong>QA Outcome:</strong><li class="list-group-item">{{TheAuditsEdit.QA_Outcome}}<br></li>
+        <strong>QAC Correct:</strong><li class="list-group-item">{{TheAuditsEdit.QAC_Correction}}<br></li>
+        <strong>KPA:</strong><li class="list-group-item">{{TheAuditsEdit.KPA}}<br></li>
+        <strong>Comment:</strong><li class="list-group-item">{{TheAuditsEdit.Comment}}<br></li>
+
+        </ul>
+    </div>
+</center>
+
+<br>
+{% endblock %}

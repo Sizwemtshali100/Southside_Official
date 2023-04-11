@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(116, 111, 111)
+
+}
+.container {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1500px;
+    height: auto;
+    font-size: large;
+    text-align: center;
+}
