@@ -10,15 +10,15 @@ from . decorators import allowed_users, Manager_only ,unauthenticated_user
 
 # Create your views here.
 
-@login_required(login_url='LoginPage')
-@Manager_only
+#@login_required(login_url='LoginPage')
+#@Manager_only
 def Home(request):
     TheAudits = QAAudit.objects.all()
     return render(request, 'Home.html',
                   {'TheAudits':TheAudits})
 
 
-@login_required(login_url='LoginPage')
+#@login_required(login_url='LoginPage')
 def Audit_form(request):
     The_form = QA_Forms
     if request.method == 'POST':
@@ -29,7 +29,7 @@ def Audit_form(request):
     return render(request, 'Audit_form.html',
                   {'The_form':The_form})
 
-@login_required(login_url='LoginPage')
+#@login_required(login_url='LoginPage')
 def QA_Audit_Edit(request, audit_id):
     The_Audits_edit = QAAudit.objects.get(pk=audit_id)
     The_form_edit = QA_Forms(request.POST or None, instance=The_Audits_edit)
@@ -40,14 +40,14 @@ def QA_Audit_Edit(request, audit_id):
                   {'The_Audits_edit':The_Audits_edit,
                    'The_form_edit':The_form_edit})
 
-@login_required(login_url='LoginPage')
+#@login_required(login_url='LoginPage')
 def QA_Audit_details(request, audit_id):
     TheAuditsEdit = QAAudit.objects.get(pk=audit_id)
     return render(request, 'QA_Audit_details.html',
                   {'TheAuditsEdit':TheAuditsEdit})
 
 #@unauthenticated_user
-def LoginPage(request):
+'''def LoginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -58,10 +58,10 @@ def LoginPage(request):
         else:
             messages.error(request, "Please try again, your password is wrong!")
     return render(request, 'Login.html')
-
+''''''
 def LogoutPage(request):
     logout(request)
-    return redirect('LoginPage')
+    return redirect('LoginPage')'''
 
 #@unauthenticated_user
 def Register(request):
@@ -76,7 +76,7 @@ def Register(request):
                   {'TheRegisterForm':TheRegisterForm})
 
 
-@login_required(login_url='LoginPage')
+#@login_required(login_url='LoginPage')
 #@Manager_only
 def TheUser(request):
     Agents_work = request.user
