@@ -11,7 +11,7 @@ import csv
 from django.http import HttpResponse
 
 # Create your views here.
-'''def Download_csv(request):
+def Download_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['content-disposition'] = 'attachment; filename=Outcome_QA.csv'
 
@@ -24,36 +24,36 @@ from django.http import HttpResponse
                     'AVS',
                     'Caller_id',
                     'Sales_agent',
-                    'Call_duration',
                     'start_date',
-                    'Premium',
                     'debit_date',
+                    'sales_date',
+                    'Premium',
                     'Cover_amount',
                     'QA_Outcome',
                     'QAC_Correction',
                     'KPA',
                     'Comment',
+                    'Sales_agent',
                     ])
     for download in Downloading_all:
-        writer.writerow([download.Date,
-                    download.QA_Agent,
-                    download.Policy_Number,
-                    download.Case_Number,
-                    download.AVS_Check,
-                    download.Caller_ID,
-                    download.Sales_Agent,                   
-                    download.Call_duration,
-                    download.Start_date,
+        writer.writerow([download.AuditDate,
+                    download.QA_Audit,
+                    download.PolicyNumber,
+                    download.CaseNumber,
+                    download.AVS,
+                    download.Caller_id,
+                    download.Sales_agent,                   
+                    download.start_date,
                     download.Premium,
-                    download.Debit_date,
+                    download.debit_date,
                     download.Cover_amount,
-                    download.QA_Correct,
+                    download.QAC_Correction,
                     download.KPA,
-                    download.HIV_Required,
+                    download.QA_Outcome,
                     download.Comment,
                     ])
     return response 
-'''
+
 @login_required(login_url='LoginPage')
 @Manager_only
 def Home(request):
