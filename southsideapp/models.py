@@ -23,6 +23,7 @@ KPA_Outcome = [
     ('Compliance','Compliance'),
     ('Data Capturing','Data Capturing'),
     ('TCF','TCF'),
+    ('Underwriting','Underwriting'),
 
 ]
 
@@ -79,18 +80,21 @@ date_of_start = [
 # Create your models here.
 class QAAudit(models.Model):
     AuditDate = models.DateTimeField(auto_now_add=True)
-    QA_Audit = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    CaseNumber = models.IntegerField()
-    PolicyNumber = models.CharField(max_length=12)
-    AVS = models.CharField(choices=AVS_Outcome, max_length=5)
-    debit_date = models.CharField(choices=date_of_debit, max_length=20)
-    start_date = models.CharField(choices=date_of_start, max_length=20)
-    Caller_id = models.CharField(max_length=50)
-    QA_Outcome = models.CharField(choices=The_QA_Outcome, max_length=20)
-    QAC_Correction = models.CharField(choices=The_QAC_Correction, max_length=5)
-    KPA = models.CharField(choices=KPA_Outcome, max_length=50)
-    Comment = models.TextField(max_length=200)
-    Sales_agent = models.CharField(max_length=50)
+    QA_Audit = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+    CaseNumber = models.IntegerField(null=False, )
+    PolicyNumber = models.CharField(max_length=12,null=False ,)
+    AVS = models.CharField(choices=AVS_Outcome,null=False , max_length=5)
+    debit_date = models.CharField(choices=date_of_debit,null=False ,max_length=20)
+    start_date = models.CharField(choices=date_of_start,null=False ,max_length=20)
+    sales_date = models.CharField(max_length=30, null=False )
+    Caller_id = models.CharField(max_length=50, null=False )
+    Cover_amount = models.CharField(max_length=13, null=False )
+    Premium = models.CharField(max_length=10, null=False )
+    QA_Outcome = models.CharField(choices=The_QA_Outcome,null=False ,max_length=20)
+    QAC_Correction = models.CharField(choices=The_QAC_Correction, max_length=5, null=False ,)
+    KPA = models.CharField(choices=KPA_Outcome, max_length=50, null=False ,)
+    Comment = models.TextField(max_length=200, null=False ,)
+    Sales_agent = models.CharField(max_length=50, null=False ,)
 
     
     def __str__(self):

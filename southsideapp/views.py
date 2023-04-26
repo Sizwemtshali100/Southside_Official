@@ -7,9 +7,53 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from . decorators import allowed_users, Manager_only ,unauthenticated_user
+import csv
+from django.http import HttpResponse
 
 # Create your views here.
+'''def Download_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['content-disposition'] = 'attachment; filename=Outcome_QA.csv'
 
+    writer = csv.writer(response)
+    Downloading_all = QAAudit.objects.all()
+    writer.writerow(['AuditDate',
+                     'QA_Audit',
+                     'PolicyNumber',
+                     'CaseNumber',
+                    'AVS',
+                    'Caller_id',
+                    'Sales_agent',
+                    'Call_duration',
+                    'start_date',
+                    'Premium',
+                    'debit_date',
+                    'Cover_amount',
+                    'QA_Outcome',
+                    'QAC_Correction',
+                    'KPA',
+                    'Comment',
+                    ])
+    for download in Downloading_all:
+        writer.writerow([download.Date,
+                    download.QA_Agent,
+                    download.Policy_Number,
+                    download.Case_Number,
+                    download.AVS_Check,
+                    download.Caller_ID,
+                    download.Sales_Agent,                   
+                    download.Call_duration,
+                    download.Start_date,
+                    download.Premium,
+                    download.Debit_date,
+                    download.Cover_amount,
+                    download.QA_Correct,
+                    download.KPA,
+                    download.HIV_Required,
+                    download.Comment,
+                    ])
+    return response 
+'''
 @login_required(login_url='LoginPage')
 @Manager_only
 def Home(request):
@@ -36,6 +80,7 @@ def QA_Audit_Edit(request, audit_id):
     if request.method == 'POST':
         if The_form_edit.is_valid():
             The_form_edit.save()
+            return redirect('Home')
     return render(request, 'QA_Audit_Edit.html',
                   {'The_Audits_edit':The_Audits_edit,
                    'The_form_edit':The_form_edit})
