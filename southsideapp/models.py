@@ -9,7 +9,7 @@ AVS_Outcome = [
 The_QA_Outcome = [
     ('Zero-defect','Zero-defect'),
     ('Defective','Defective'),
-    ('CAT_1','CAT_1'),
+    ('Refer to Commit','Refer to Commit'),
 ]
 
 The_QAC_Correction = [
@@ -90,11 +90,15 @@ class QAAudit(models.Model):
     Caller_id = models.CharField(max_length=50, null=False )
     Cover_amount = models.CharField(max_length=13, null=False )
     Premium = models.CharField(max_length=10, null=False )
+    Duration = models.CharField(max_length=6, null=False, default=0)
     QA_Outcome = models.CharField(choices=The_QA_Outcome,null=False ,max_length=20)
     QAC_Correction = models.CharField(choices=The_QAC_Correction, max_length=5, null=False ,)
-    KPA = models.CharField(choices=KPA_Outcome, max_length=50, null=False ,)
-    Comment = models.TextField(max_length=200, null=False ,)
-    Sales_agent = models.CharField(max_length=50, null=False ,)
+    KPA = models.CharField(choices=KPA_Outcome, max_length=50, null=False)
+    KPA_1 = models.CharField(choices=KPA_Outcome, max_length=50, null=True)
+    KPA_2 = models.CharField(choices=KPA_Outcome, max_length=50, null=True)
+    KPA_3 = models.CharField(choices=KPA_Outcome, max_length=50, null=True)
+    Comment = models.TextField(max_length=200, null=False)
+    Sales_agent = models.CharField(max_length=50, null=False)
 
     
     def __str__(self):

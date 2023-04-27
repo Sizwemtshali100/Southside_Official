@@ -8,9 +8,9 @@ class QA_Forms(ModelForm):
     class Meta:
         model = QAAudit
         fields = ['QA_Audit','PolicyNumber','CaseNumber','Sales_agent','AVS',
-                  'Premium','Cover_amount','sales_date','Caller_id',
+                  'Premium','Duration','Cover_amount','sales_date','Caller_id',
                   'debit_date','start_date','QA_Outcome',
-                  'QAC_Correction','KPA','Comment']#
+                  'QAC_Correction','KPA','KPA_1','KPA_2','KPA_3','Comment']#
 
         widgets = {           
             'PolicyNumber':forms.TextInput(attrs={'class':'form-control',}),
@@ -21,6 +21,7 @@ class QA_Forms(ModelForm):
             'Cover_amount' : forms.TextInput(attrs={'class':'form-control'}),
             'sales_date' : forms.TextInput(attrs={'class':'form-control'}),
             'PolicyNumber' : forms.TextInput(attrs={'class':'form-control'}),
+            'Duration' : forms.TextInput(attrs={'class':'form-control'}),
             'CaseNumber' : forms.TextInput(attrs={'class':'form-control'}),
             'Caller_id' : forms.TextInput(attrs={'class':'form-control'}),
             'debit_date': forms.Select(attrs={'class':'form-control'}),
@@ -28,6 +29,9 @@ class QA_Forms(ModelForm):
             'QA_Outcome' : forms.Select(attrs={'class':'form-control'}),
             'QAC_Correction' : forms.Select(attrs={'class':'form-control'}),
             'KPA' : forms.Select(attrs={'class':'form-control'}),
+            'KPA_1' : forms.Select(attrs={'class':'form-control'}),
+            'KPA_2' : forms.Select(attrs={'class':'form-control'}),
+            'KPA_3' : forms.Select(attrs={'class':'form-control'}),
             'Comment' : forms.Textarea(attrs={'class':'form-control'}),
         }
 
